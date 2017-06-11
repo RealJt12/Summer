@@ -4,11 +4,12 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.realjt.summer</groupId>
+		<groupId>com.realjt</groupId>
 		<artifactId>summer</artifactId>
-		<version>${summer.version}</version>
+		<version>1.0</version>
 	</parent>
 
+    <groupId>com.realjt.summer</groupId>
 	<artifactId>web</artifactId>
 	<packaging>war</packaging>
 	<name>web</name>
@@ -25,6 +26,11 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+        <dependency>
+	    	<groupId>com.realjt.summer</groupId>
+        	<artifactId>summer</artifactId>
+    	    <version>1.0</version>
+        </dependency>
 	</dependencies>
 
 </project>

@@ -16,7 +16,7 @@
 	<url>http://maven.apache.org</url>
 
 	<build>
-		<finalName>Summer</finalName>
+		<finalName>summer</finalName>
 	</build>
 
 	<dependencies>

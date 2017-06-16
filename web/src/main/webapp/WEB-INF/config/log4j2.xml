@@ -7,14 +7,14 @@
 				pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} [%t] %-5level %logger{36}.%M - %msg%n" />
 		</Console>
 
-		<File name="File" fileName="${log4j:configParentLocation}/../../log/run.log"
+		<File name="File" fileName="${log4j:configParentLocation}/../log/run.log"
 			append="false">
 			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36}.%M %L - %msg%n" />
 		</File>
 
 		<RollingFile name="RollingFile"
-			fileName="${log4j:configParentLocation}/../../log/poker.log"
-			filePattern="${log4j:configParentLocation}/../../log/poker.%d{yyyy-MM-dd}.%i.log"
+			fileName="${log4j:configParentLocation}/../log/summer.log"
+			filePattern="${log4j:configParentLocation}/../log/summer.%d{yyyy-MM-dd}.%i.log"
 			append="true">
 			<PatternLayout
 				pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} %-5level %c{36}.%M - %msg%n" />
@@ -30,7 +30,7 @@
 			<AppenderRef ref="Console" />
 		</Root>
 
-		<logger name="com.realjt.poker" level="DEBUG" additivity="false">
+		<logger name="com.realjt.summer" level="DEBUG" additivity="false">
 			<appender-ref ref="RollingFile" />
 		</logger>
 	</Loggers>

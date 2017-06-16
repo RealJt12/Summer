@@ -4,25 +4,26 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-	    <groupId>com.realjt</groupId>
-	    <artifactId>summer</artifactId>
-	    <version>1.0</version>
+		<groupId>com.realjt</groupId>
+		<artifactId>summer</artifactId>
+		<version>1.0</version>
 	</parent>
 
-    <groupId>com.realjt.summer</groupId>
+	<groupId>com.realjt.summer</groupId>
 	<artifactId>summer</artifactId>
 
 	<dependencies>
-        <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>4.3.7.RELEASE</version>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
-        <dependency>
-	    	<groupId>com.realjt.summer</groupId>
-        	<artifactId>common</artifactId>
-    	    <version>1.0</version>
-        </dependency>
+		<dependency>
+			<groupId>com.realjt.summer</groupId>
+			<artifactId>common</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 
 </project>

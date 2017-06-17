@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.realjt</groupId>
 	<artifactId>summer</artifactId>
-	<version>1.0</version>
+	<version>${summer.version}</version>
 	<packaging>pom</packaging>
 
 	<properties>
-		<summer.version>1.0</summer.version>
+		<summer.version>1.0-SNAPSHOT</summer.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 

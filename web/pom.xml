@@ -6,10 +6,10 @@
 	<parent>
 		<groupId>com.realjt</groupId>
 		<artifactId>summer</artifactId>
-		<version>1.0</version>
+		<version>${summer.version}</version>
 	</parent>
 
-    <groupId>com.realjt.summer</groupId>
+	<groupId>com.realjt.summer</groupId>
 	<artifactId>web</artifactId>
 	<packaging>war</packaging>
 	<name>web</name>
@@ -26,11 +26,11 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-        <dependency>
-	    	<groupId>com.realjt.summer</groupId>
-        	<artifactId>summer</artifactId>
-    	    <version>1.0</version>
-        </dependency>
+		<dependency>
+			<groupId>com.realjt.summer</groupId>
+			<artifactId>summer</artifactId>
+			<version>${summer.version}</version>
+		</dependency>
 	</dependencies>
 
 </project>

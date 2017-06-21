@@ -28,13 +28,13 @@
 	</listener>
 
 	<servlet>
-		<servlet-name>SummerServlet</servlet-name>
+		<servlet-name>summerservlet</servlet-name>
 		<servlet-class>com.realjt.summer.summer.SummerServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>SummerServlet</servlet-name>
-		<url-pattern>/SummerServlet</url-pattern>
+		<servlet-name>summerservlet</servlet-name>
+		<url-pattern>/summerservlet</url-pattern>
 	</servlet-mapping>
 
 </web-app>

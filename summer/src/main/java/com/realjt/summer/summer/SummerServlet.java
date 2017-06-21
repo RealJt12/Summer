@@ -24,8 +24,9 @@ public class SummerServlet extends HttpServlet
 		response.setCharacterEncoding("UTF-8");
 
 		log.info("abc");
+		log.debug("realjt");
 
-		response.getWriter().write("abc");
+		response.getWriter().write("developer");
 	}
 
 	@Override

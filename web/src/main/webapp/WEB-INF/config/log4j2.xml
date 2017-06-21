@@ -21,7 +21,7 @@
 				pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} %-5level %c{36}.%M - %msg%n" />
 			<DefaultRolloverStrategy max="10" />
 			<Policies>
-				<SizeBasedTriggeringPolicy size="10KB" />
+				<SizeBasedTriggeringPolicy size="10MB" />
 			</Policies>
 		</RollingFile>
 	</Appenders>

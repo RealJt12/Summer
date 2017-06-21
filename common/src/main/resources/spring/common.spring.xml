@@ -8,10 +8,10 @@
 		file-encoding="utf-8" location="/WEB-INF/config/*.properties" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="org.sqlite.JDBC" />
+		<property name="driverClassName" value="${driverClassName}" />
 		<property name="username" value="" />
 		<property name="password" value="" />
-		<property name="url" value="" />
+		<property name="url" value="${url}" />
 		<property name="maxActive" value="150" />
 		<property name="maxIdle" value="30" />
 		<property name="minIdle" value="5" />

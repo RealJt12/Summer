@@ -1,4 +1,4 @@
-package com.realjt.summer.summer;
+package com.realjt.summer.summer.servlet;
 
 import java.io.IOException;
 
@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.realjt.summer.summer.dao.UserDao;
+import com.realjt.summer.summer.domain.User;
 
 public class SummerServlet extends HttpServlet
 {
@@ -29,18 +31,18 @@ public class SummerServlet extends HttpServlet
 		ApplicationContext applicationContext = WebApplicationContextUtils
 				.getWebApplicationContext(getServletContext());
 
-		JdbcTemplate jdbcTemplate = (JdbcTemplate) applicationContext
-				.getBean("jdbcTemplate");
-
-		log.info("abc" + System.getProperty("catalina.home"));
+		UserDao userDao = (UserDao) applicationContext.getBean("userDao");
 
 		try
 		{
-			jdbcTemplate.update("delete from userinfo");
+			User user = new User();
+			user.setUsername("realjt");
+
+			userDao.insertUser(user);
 		}
 		catch (Exception e)
 		{
-			log.error("error", e);
+			log.error("insert user error", e);
 		}
 
 		log.debug("realjt");

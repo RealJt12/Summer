@@ -29,7 +29,7 @@
 
 	<servlet>
 		<servlet-name>summerservlet</servlet-name>
-		<servlet-class>com.realjt.summer.summer.SummerServlet</servlet-class>
+		<servlet-class>com.realjt.summer.summer.servlet.SummerServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

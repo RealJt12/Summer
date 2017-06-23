@@ -12,17 +12,17 @@
 		<property name="username" value="" />
 		<property name="password" value="" />
 		<property name="url" value="${url}" />
-		<property name="maxActive" value="150" />
-		<property name="maxIdle" value="30" />
-		<property name="minIdle" value="5" />
-		<property name="initialSize" value="5" />
-		<property name="maxWait" value="10000" />
-		<property name="testOnBorrow" value="true" />
-		<property name="testOnReturn" value="false" />
-		<property name="testWhileIdle" value="true" />
-		<property name="removeAbandoned" value="true" />
-		<property name="removeAbandonedTimeout" value="30" />
-		<property name="logAbandoned" value="true" />
+		<property name="maxActive" value="${maxActive}" />
+		<property name="maxIdle" value="${maxIdle}" />
+		<property name="minIdle" value="${minIdle}" />
+		<property name="initialSize" value="${initialSize}" />
+		<property name="maxWait" value="${maxWait}" />
+		<property name="testOnBorrow" value="${testOnBorrow}" />
+		<property name="testOnReturn" value="${testOnReturn}" />
+		<property name="testWhileIdle" value="${testWhileIdle}" />
+		<property name="removeAbandoned" value="${removeAbandoned}" />
+		<property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}" />
+		<property name="logAbandoned" value="${logAbandoned}" />
 	</bean>
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">

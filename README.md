@@ -8,6 +8,6 @@ cd Summer
 mvn clean install  
 cp ./web/target/summer.war ~/Tomcat/webapps  
 cd ~/Tomcat/bin  
-startup.sh  
+./startup.sh  
 
 and good luck

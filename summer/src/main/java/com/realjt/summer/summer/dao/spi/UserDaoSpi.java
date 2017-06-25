@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -49,6 +50,8 @@ public class UserDaoSpi implements UserDao
 		if (null == user)
 		{
 			log.error("user is null");
+
+			return;
 		}
 
 		String sql = "insert into userinfo (username,password,sex,age,phone,email,address) values (?,?,?,?,?,?,?)";
@@ -76,6 +79,8 @@ public class UserDaoSpi implements UserDao
 		if (CollectionUtils.isEmpty(users))
 		{
 			log.error("users is empty");
+
+			return;
 		}
 
 		String sql = "insert into userinfo (username,password,sex,age,phone,email,address) values (?,?,?,?,?,?,?)";
@@ -116,6 +121,13 @@ public class UserDaoSpi implements UserDao
 
 	public User query(String username)
 	{
+		if (StringUtils.isBlank(username))
+		{
+			log.error("username is blank");
+
+			return null;
+		}
+
 		String sql = "select * from userinfo where username = ?";
 
 		User user = jdbcTemplate.queryForObject(sql, new Object[] { username },
@@ -135,8 +147,30 @@ public class UserDaoSpi implements UserDao
 
 	public void update(User user)
 	{
-		// String sql =
-		// "update userinfo set password = ?,sex = ?,age = ?,phone = ?,email = ?,address = ?";
+		if (null == user)
+		{
+			log.error("user is null");
+
+			return;
+		}
+
+		String sql = "update userinfo set password = ?,sex = ?,age = ?,phone = ?,email = ?,address = ?";
+
+		jdbcTemplate.update(sql, new PreparedStatementSetter()
+		{
+			@Override
+			public void setValues(PreparedStatement preparedStatement)
+					throws SQLException
+			{
+				preparedStatement.setString(1, user.getPassword());
+				preparedStatement.setInt(2, user.getSex());
+				preparedStatement.setInt(3, user.getAge());
+				preparedStatement.setString(4, user.getPhone());
+				preparedStatement.setString(5, user.getEmail());
+				preparedStatement.setString(6, user.getAddress());
+			}
+
+		});
 	}
 
 	public void delete(int id)

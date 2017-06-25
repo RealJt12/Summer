@@ -38,7 +38,7 @@ public class SummerServlet extends HttpServlet
 			User user = new User();
 			user.setUsername("realjt");
 
-			userDao.insertUser(user);
+			userDao.add(user);
 		}
 		catch (Exception e)
 		{

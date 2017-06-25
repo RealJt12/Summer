@@ -13,6 +13,10 @@ import org.slf4j.LoggerFactory;
  */
 public class SessionValidateFilter implements Filter {
 
+  private static final String AUTHENTICATE = "AUTHENTICATE";
+
+  private static final String LOGIN = "login";
+
   private static final Logger log = LoggerFactory
       .getLogger(SessionValidateFilter.class);
 
@@ -26,16 +30,35 @@ public class SessionValidateFilter implements Filter {
     HttpServletRequest request = (HttpServletRequest) servletRequest;
     HttpServletResponse reponse = (HttpServletResponse) servletResponse;
     HttpSession session = request.getSession();
-    if (session == null) {
-      //TODO do valid session
-      reponse.sendRedirect("login.jsp");
-      log.info("SessionValidateFilter");
-      return;
+
+
+    String uri = request.getRequestURI();
+    log.info("enter validate url = {}", uri);
+
+    if (uri.indexOf(LOGIN) == -1) {
+
+      Object obj = session.getAttribute(AUTHENTICATE);
+      if (obj == null) {
+
+        reponse.sendRedirect("login");
+        log.info("invalid");
+        return;
+
+      } else {
+
+        //TODO do valid session
+        log.info("valid ok");
+
+
+      }
+    } else {
+        // TODO
+      session.setAttribute(AUTHENTICATE, new Object());
+      log.info("generate authenticator");
 
     }
 
     log.info("exit SessionValidateFilter");
-
 
     filterChain.doFilter(request, reponse);
   }

@@ -45,7 +45,7 @@ public class UserDaoSpi implements UserDao
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public void add(User user)
+	public void add(final User user)
 	{
 		if (null == user)
 		{
@@ -74,7 +74,8 @@ public class UserDaoSpi implements UserDao
 		});
 	}
 
-	public void add(List<User> users)
+	@Override
+	public void add(final List<User> users)
 	{
 		if (CollectionUtils.isEmpty(users))
 		{
@@ -109,6 +110,7 @@ public class UserDaoSpi implements UserDao
 		});
 	}
 
+	@Override
 	public User query(int id)
 	{
 		String sql = "select * from userinfo where id = ?";
@@ -119,6 +121,7 @@ public class UserDaoSpi implements UserDao
 		return user;
 	}
 
+	@Override
 	public User query(String username)
 	{
 		if (StringUtils.isBlank(username))
@@ -136,6 +139,7 @@ public class UserDaoSpi implements UserDao
 		return user;
 	}
 
+	@Override
 	public List<User> query()
 	{
 		String sql = "select * from userinfo";
@@ -145,7 +149,8 @@ public class UserDaoSpi implements UserDao
 		return users;
 	}
 
-	public void update(User user)
+	@Override
+	public void update(final User user)
 	{
 		if (null == user)
 		{
@@ -173,7 +178,8 @@ public class UserDaoSpi implements UserDao
 		});
 	}
 
-	public void delete(int id)
+	@Override
+	public void delete(final int id)
 	{
 		String sql = "delete from userinfo where id = ?";
 
@@ -189,7 +195,8 @@ public class UserDaoSpi implements UserDao
 		});
 	}
 
-	public void delete(String username)
+	@Override
+	public void delete(final String username)
 	{
 		String sql = "delete from userinfo where username = ?";
 
@@ -205,6 +212,7 @@ public class UserDaoSpi implements UserDao
 		});
 	}
 
+	@Override
 	public long count()
 	{
 		String sql = "select count(*) from userinfo";

@@ -37,6 +37,12 @@ public class SummerServlet extends HttpServlet
 		{
 			User user = new User();
 			user.setUsername("realjt");
+			user.setPassword("juntian");
+			user.setSex(0);
+			user.setAge(20);
+			user.setPhone("1234567890");
+			user.setEmail("123@realjt.com");
+			user.setAddress("nanjing");
 
 			userDao.add(user);
 		}
@@ -47,7 +53,8 @@ public class SummerServlet extends HttpServlet
 
 		log.debug("realjt");
 
-		response.getWriter().write("developer");
+		response.getWriter().write(
+				"developer total:" + userDao.count() + " " + userDao.query());
 	}
 
 	@Override

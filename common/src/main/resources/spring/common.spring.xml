@@ -7,7 +7,8 @@
 	<context:property-placeholder
 		file-encoding="utf-8" location="/WEB-INF/config/*.properties" />
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
 		<property name="driverClassName" value="${driverClassName}" />
 		<property name="username" value="" />
 		<property name="password" value="" />

@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.realjt</groupId>
 		<artifactId>summer</artifactId>
-		<version>${summer.version}</version>
+		<version>1.0</version>
 	</parent>
 
 	<groupId>com.realjt.summer</groupId>
@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>com.realjt.summer</groupId>
 			<artifactId>summer</artifactId>
-			<version>${summer.version}</version>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 

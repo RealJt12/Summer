@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.realjt</groupId>
 	<artifactId>summer</artifactId>
-	<version>${summer.version}</version>
+	<version>1.0</version>
 	<packaging>pom</packaging>
 
 	<properties>

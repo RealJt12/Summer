@@ -1,5 +1,8 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page session="true" errorPage="/error.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,18 +12,31 @@
 </head>
 <body>
 	<%
-		out.print("realjt 2012");
-		out.print("<br/>");
-		out.print("realjt 2012");
+		out.println("RealJt 一直被模仿，从未被超越");
 	%>
-	<br />
+	<br>
+	<br>
 	<%
-		out.print("juntian");
-		out.print("<br/>");
-		out.print(session.getId());
-		out.print("<br/>");
-		out.print(request.getHeader("USER-AGENT"));
+		Date date = new Date();
+		out.println("当前时间: " + date);
 	%>
+	<br>
+	<br>
+	<%
+		out.print("host=" + request.getHeader("host"));
+		out.print("<br>");
+		out.print("session=" + session.getId());
+		out.print("<br/>");
+		out.print("user-agent=" + request.getHeader("user-agent"));
+		out.print("<br/>");
+		out.println("accept=" + request.getHeader("accept"));
+		out.print("<br/>");
+		out.println("cookie=" + request.getHeader("cookie"));
+	%>
+	<br>
+	<br>
+
+	<a href="summerservlet">Summer</a>
 
 </body>
 </html>

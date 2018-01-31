@@ -1,5 +1,4 @@
-<%@page import="java.util.Date"%>
-<%@page import="java.util.Enumeration"%>
+<%@ page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page session="true" errorPage="/error.jsp"%>
@@ -31,7 +30,7 @@
 		out.print("<br/>");
 		out.println("accept=" + request.getHeader("accept"));
 		out.print("<br/>");
-		out.println("cookie=" + request.getHeader("cookie"));
+		out.println("cookie: " + request.getHeader("cookie"));
 	%>
 	<br>
 	<br>

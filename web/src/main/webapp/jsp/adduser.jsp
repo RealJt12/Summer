@@ -8,7 +8,7 @@
 <title>Add User</title>
 </head>
 <body>
-	<form action="/summer/adduserservlet" method="get">
+	<form action="/summer/adduser" method="get">
 		UserName: <input type="text" name="username"></input><br>
 		Password: <input type="password" name="password"></input><br>
 		Sex: <input type="text" name="sex"></input><br> Age: <input

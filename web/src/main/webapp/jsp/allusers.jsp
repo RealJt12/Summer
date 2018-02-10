@@ -54,7 +54,7 @@
 			<td><%=user.getEmail()%></td>
 			<td><%=user.getAddress()%></td>
 			<td><a href="updateuserservlet?id=<%=user.getId()%>">update</a>
-				<a href="deleteuserservlet?id=<%=user.getId()%>">delete</a></td>
+				<a href="deleteuser?id=<%=user.getId()%>">delete</a></td>
 		</tr>
 		<%
 			}

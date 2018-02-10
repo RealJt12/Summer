@@ -78,4 +78,10 @@ public class UserController
 		return "redirect:/allusers";
 	}
 
+	@RequestMapping("/updateuser")
+	public String updateUser(HttpServletRequest request, HttpServletResponse response)
+	{
+		return "redirect:/allusers";
+	}
+
 }

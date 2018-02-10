@@ -7,7 +7,7 @@
 	<display-name>summer</display-name>
 
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<session-config>
@@ -27,33 +27,37 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- <filter> <filter-name>sessionvalidatefilter</filter-name> <filter-class>com.realjt.summer.summer.filter.SessionValidateFilter</filter-class> 
-		</filter> -->
+	<servlet>
+		<servlet-name>dispatcherservlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:spring/*.spring.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
 	<servlet>
 		<servlet-name>summerservlet</servlet-name>
 		<servlet-class>com.realjt.summer.summer.servlet.SummerServlet</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>allusersservlet</servlet-name>
-		<servlet-class>com.realjt.summer.summer.servlet.AllUsersServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>deleteuserservlet</servlet-name>
-		<servlet-class>com.realjt.summer.summer.servlet.DeleteUserServlet</servlet-class>
-	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>dispatcherservlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>summerservlet</servlet-name>
 		<url-pattern>/summerservlet</url-pattern>
 	</servlet-mapping>
+
 	<servlet-mapping>
-		<servlet-name>allusersservlet</servlet-name>
-		<url-pattern>/allusersservlet</url-pattern>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/images/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>deleteuserservlet</servlet-name>
-		<url-pattern>/deleteuserservlet</url-pattern>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 
 	<error-page>

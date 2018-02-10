@@ -15,11 +15,11 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import com.realjt.summer.summer.dao.UserDao;
 import com.realjt.summer.summer.domain.User;
 
-public class SummerServlet extends HttpServlet
+public class AddUserServlet extends HttpServlet
 {
-	private static final long serialVersionUID = -3903640785697216419L;
+	private static final long serialVersionUID = 6715728055633283308L;
 
-	private static final Logger log = LoggerFactory.getLogger(SummerServlet.class);
+	private static final Logger log = LoggerFactory.getLogger(AddUserServlet.class);
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -31,31 +31,28 @@ public class SummerServlet extends HttpServlet
 
 		UserDao userDao = (UserDao) applicationContext.getBean("userDao");
 
-		try
-		{
-			User user = new User();
-			user.setUsername("realjt");
-			user.setPassword("juntian");
-			user.setSex(0);
-			user.setAge(20);
-			user.setPhone("1234567890");
-			user.setEmail("123@realjt.com");
-			user.setAddress("nanjing");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		int sex = Integer.valueOf(request.getParameter("sex"));
+		int age = Integer.valueOf(request.getParameter("age"));
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		String address = request.getParameter("address");
 
-			// userDao.add(user);
-		} catch (Exception e)
-		{
-			log.error("insert user error", e);
-		}
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setSex(sex);
+		user.setAge(age);
+		user.setPhone(phone);
+		user.setEmail(email);
+		user.setAddress(address);
 
-		log.debug("realjt");
+		log.info("add user " + user);
 
-		response.getWriter().write("developer total:" + userDao.count() + " " + userDao.query());
-	}
+		userDao.add(user);
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+		response.sendRedirect("/summer/allusers");
 	}
 
 }

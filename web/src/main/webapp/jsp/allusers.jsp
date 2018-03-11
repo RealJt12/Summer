@@ -53,8 +53,8 @@
 			<td><%=user.getPhone()%></td>
 			<td><%=user.getEmail()%></td>
 			<td><%=user.getAddress()%></td>
-			<td><a href="updateuser?id=<%=user.getId()%>">update</a> 
-			<a href="deleteuser?id=<%=user.getId()%>">delete</a></td>
+			<td><a href="updateuser?id=<%=user.getId()%>">update</a> <a
+				href="deleteuser?id=<%=user.getId()%>">delete</a></td>
 		</tr>
 		<%
 			}

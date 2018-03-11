@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.realjt.summer.summer.dao.UserDao;
 import com.realjt.summer.summer.domain.User;
@@ -37,7 +39,7 @@ public class UserController
 		return "allusers";
 	}
 
-	@RequestMapping(value = "/adduser")
+	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
 	public String addUser(HttpServletRequest request, HttpServletResponse response)
 	{
 		String username = request.getParameter("username");
@@ -47,6 +49,14 @@ public class UserController
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 		String address = request.getParameter("address");
+
+		User queryUser = userDao.query(username);
+		if (null != queryUser)
+		{
+			request.setAttribute("message", "the user " + username + " has already exist.");
+
+			return "adduser";
+		}
 
 		User user = new User();
 		user.setUsername(username);
@@ -82,6 +92,25 @@ public class UserController
 	public String updateUser(HttpServletRequest request, HttpServletResponse response)
 	{
 		return "redirect:/allusers";
+	}
+
+	@RequestMapping("/login")
+	public String login(HttpServletRequest request, HttpServletResponse response)
+	{
+		String inputValidateCode = request.getParameter("validateCode");
+
+		HttpSession httpSession = request.getSession();
+		String sesseionValidateCode = (String) httpSession.getAttribute("VALIDATE_CODE");
+
+		if (StringUtils.isNoneBlank(inputValidateCode) && inputValidateCode.equalsIgnoreCase(sesseionValidateCode))
+		{
+			httpSession.setAttribute("loginMessage", "验证码正确");
+		} else
+		{
+			httpSession.setAttribute("loginMessage", "验证码错误");
+		}
+
+		return "redirect:/jsp/login.jsp";
 	}
 
 }

@@ -48,7 +48,6 @@ public class SessionValidateFilter implements Filter
 			Object obj = session.getAttribute(AUTHENTICATE);
 			if (obj == null)
 			{
-
 				reponse.sendRedirect("login");
 				log.info("invalid");
 

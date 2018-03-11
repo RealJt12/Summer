@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -59,8 +60,7 @@ public class UserDaoSpi implements UserDao
 		jdbcTemplate.update(sql, new PreparedStatementSetter()
 		{
 			@Override
-			public void setValues(PreparedStatement preparedStatement)
-					throws SQLException
+			public void setValues(PreparedStatement preparedStatement) throws SQLException
 			{
 				preparedStatement.setString(1, user.getUsername());
 				preparedStatement.setString(2, user.getPassword());
@@ -89,8 +89,7 @@ public class UserDaoSpi implements UserDao
 		jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter()
 		{
 			@Override
-			public void setValues(PreparedStatement preparedStatement, int i)
-					throws SQLException
+			public void setValues(PreparedStatement preparedStatement, int i) throws SQLException
 			{
 				preparedStatement.setString(1, users.get(i).getUsername());
 				preparedStatement.setString(2, users.get(i).getPassword());
@@ -115,8 +114,7 @@ public class UserDaoSpi implements UserDao
 	{
 		String sql = "select * from userinfo where id = ?";
 
-		User user = jdbcTemplate.queryForObject(sql, new Object[] { id },
-				USER_ROWMAPPER);
+		User user = jdbcTemplate.queryForObject(sql, new Object[] { id }, USER_ROWMAPPER);
 
 		return user;
 	}
@@ -133,8 +131,14 @@ public class UserDaoSpi implements UserDao
 
 		String sql = "select * from userinfo where username = ?";
 
-		User user = jdbcTemplate.queryForObject(sql, new Object[] { username },
-				USER_ROWMAPPER);
+		User user = null;
+		try
+		{
+			user = jdbcTemplate.queryForObject(sql, new Object[] { username }, USER_ROWMAPPER);
+		} catch (EmptyResultDataAccessException e)
+		{
+			log.info("query with username = {}, result is empty", username);
+		}
 
 		return user;
 	}
@@ -164,8 +168,7 @@ public class UserDaoSpi implements UserDao
 		jdbcTemplate.update(sql, new PreparedStatementSetter()
 		{
 			@Override
-			public void setValues(PreparedStatement preparedStatement)
-					throws SQLException
+			public void setValues(PreparedStatement preparedStatement) throws SQLException
 			{
 				preparedStatement.setString(1, user.getPassword());
 				preparedStatement.setInt(2, user.getSex());
@@ -186,8 +189,7 @@ public class UserDaoSpi implements UserDao
 		jdbcTemplate.update(sql, new PreparedStatementSetter()
 		{
 			@Override
-			public void setValues(PreparedStatement preparedStatement)
-					throws SQLException
+			public void setValues(PreparedStatement preparedStatement) throws SQLException
 			{
 				preparedStatement.setInt(1, id);
 			}
@@ -203,8 +205,7 @@ public class UserDaoSpi implements UserDao
 		jdbcTemplate.update(sql, new PreparedStatementSetter()
 		{
 			@Override
-			public void setValues(PreparedStatement preparedStatement)
-					throws SQLException
+			public void setValues(PreparedStatement preparedStatement) throws SQLException
 			{
 				preparedStatement.setString(1, username);
 			}

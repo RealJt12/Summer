@@ -4,19 +4,53 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="shortcut icon"
+	href="<%=request.getContextPath()%>/images/favicon.ico" />
 <title>Add User</title>
 </head>
 <body>
-	<form action="/summer/adduser" method="get">
-		UserName: <input type="text" name="username"></input><br>
-		Password: <input type="password" name="password"></input><br>
-		Sex: <input type="text" name="sex"></input><br> Age: <input
-			type="text" name="age"></input><br> Phone: <input type="text"
-			name="phone"></input><br> Email: <input type="text" name="email"></input><br>
-		Address: <input type="text" name="address"></input><br> <input
-			type="submit" value="Add"></input>
+	<form action="/summer/adduser" method="post">
+		<table>
+			<tr>
+				<td>UserName</td>
+				<td><input type="text" name="username"
+					value="<%=null != request.getParameter("username") ? request.getParameter("username") : ""%>"></input></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password"
+					value="<%=null != request.getParameter("password") ? request.getParameter("password") : ""%>"></input></td>
+			</tr>
+			<tr>
+				<td>Sex</td>
+				<td><input type="text" name="sex"
+					value="<%=null != request.getParameter("sex") ? request.getParameter("sex") : ""%>"></input></td>
+			</tr>
+			<tr>
+				<td>Age</td>
+				<td><input type="text" name="age"
+					value="<%=null != request.getParameter("age") ? request.getParameter("age") : ""%>"></input></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td><input type="text" name="phone"
+					value="<%=null != request.getParameter("phone") ? request.getParameter("phone") : ""%>"></input></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="text" name="email"
+					value="<%=null != request.getParameter("email") ? request.getParameter("email") : ""%>"></input></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><input type="text" name="address"
+					value="<%=null != request.getParameter("address") ? request.getParameter("address") : ""%>"></input></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="新增"></input></td>
+				<td><font color="red"><%=null != request.getAttribute("message") ? request.getAttribute("message") : ""%></font></td>
+			</tr>
+		</table>
 	</form>
-
 </body>
 </html>

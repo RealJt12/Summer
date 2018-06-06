@@ -105,7 +105,8 @@ public class UserController
 		if (StringUtils.isNoneBlank(inputValidateCode) && inputValidateCode.equalsIgnoreCase(sesseionValidateCode))
 		{
 			httpSession.setAttribute("loginMessage", "验证码正确");
-		} else
+		}
+		else
 		{
 			httpSession.setAttribute("loginMessage", "验证码错误");
 		}

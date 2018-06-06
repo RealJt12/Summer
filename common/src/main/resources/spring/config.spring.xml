@@ -23,7 +23,8 @@
 
 	<bean id="config" class="com.realjt.summer.config.Config"
 		factory-method="getInstance">
-		<constructor-arg ref="propertyConfigurer"></constructor-arg>
+		<constructor-arg ref="propertyConfigurer" />
+		<constructor-arg ref="servletContext" />
 	</bean>
 
 </beans>

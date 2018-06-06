@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon"
 	href="<%=request.getContextPath()%>/images/favicon.ico" />
-<title>登录</title>
+<title>Login</title>
 </head>
 <body>
 	<script language="javascript" type="text/javascript">
@@ -43,9 +43,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><font id="loginMessage"
-					color="red"> <%=session.getAttribute("loginMessage") == null ? ""
-					: session.getAttribute("loginMessage").toString()%>
-				</font></td>
+					color="red">${sessionScope.loginMessage}</font></td>
 			</tr>
 			<%
 				session.removeAttribute("loginMessage");
